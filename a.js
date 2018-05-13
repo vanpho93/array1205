@@ -7,6 +7,18 @@ const people = [
     { name: 'Tuan', age: 15, height: 110 },
 ];
 
-const arr = numbers.map(x => x * x);
+Array.prototype.myFilter = function(fn) {
+    const output = [];
+    for (let index = 0; index < this.length; index++) {
+        const element = this[index];
+        if (fn(element)) output.push(element);
+    }
+    return output;
+}
+// numbers.myMap()
+// const arr = numbers.map(x => x * x);
+// const arrAge = people.map(person => person.age);
 
-console.log(arr);
+// const arrEven = numbers.filter(x => x % 2 === 0);
+const arrElder = people.myFilter(person => person.age > 14);
+console.log(arrElder);
